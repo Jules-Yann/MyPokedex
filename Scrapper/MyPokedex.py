@@ -13,16 +13,15 @@ def addToBdd(id, name, type):
             type TEXT NOT NULL
             )''')
 
-    # Insert a row of data
+    # Insert the row passed in argument
     pokemon = (id, name, type)
     if(getPokemon(id)==None):
         c.execute("INSERT INTO pokedex VALUES (?, ?, ?)", pokemon)
 
-    # Save the changes
+    # Save changes
     conn.commit()
 
-    # We can also close the connection if we are done with it.
-    # Just be sure any changes have been committed or they will be lost.
+    # close de bdd connection
     conn.close()
 
 def getPokemon(id):
